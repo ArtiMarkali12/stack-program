@@ -1,0 +1,71 @@
+include<stdio.h>
+#include<ctype.h>
+#define MAX 100
+struct stack
+{
+        char a[MAX];
+        int top;
+}s;
+void init()
+{
+        s.top=-1;
+}
+int isempty()
+{
+        if(s.top==-1)
+          return 1;
+        else
+          return 0;
+}
+int isfull()
+{
+        if(s.top==MAX-1)
+          return 1;
+        else
+          return 0;
+}
+void push(char x)
+{
+        if(isfull())
+          printf("stack is full don't push");
+        else
+          {
+            s.top++;
+            s.a[s.top]=x;
+          }
+}
+char pop()
+{
+        char ch;
+          if(isempty())
+            printf("stack is empty dont pop:");
+          else
+            {
+              ch=s.a[s.top];
+              s.top--;
+              return ch;
+            }
+}
+int main()
+{
+        char s1[20];
+        int i;
+        init();
+        printf("enter string:");
+        scanf("%s",&s1);
+        for(i=0;s1[i]!='\0';i++)
+        {
+        push(s1[i]);
+        }
+        for(i=0;s1[i]!='\0';i++)
+        {
+        if(s1[i]!=pop())
+        break;
+        }
+
+        if(isempty())
+        printf("string is palindrome :");
+        else
+        printf("string is not palindrome:");
+        }
+
